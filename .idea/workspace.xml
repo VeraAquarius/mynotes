@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="4 day">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="5 day" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,9 +21,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2uz3ZUsEJdJOlWOp8HYKYj1TKzY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -46,6 +42,11 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "directory"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -95,7 +96,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1743237630953</updated>
-      <workItem from="1743237632016" duration="5235000" />
+      <workItem from="1743237632016" duration="5911000" />
     </task>
     <task id="LOCAL-00001" summary="3 day">
       <option name="closed" value="true" />
@@ -121,7 +122,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743242294165</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="5 day">
+      <option name="closed" value="true" />
+      <created>1743243958396</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1743243958396</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,6 +150,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="3 day" />
     <MESSAGE value="4 day" />
-    <option name="LAST_COMMIT_MESSAGE" value="4 day" />
+    <MESSAGE value="5 day" />
+    <option name="LAST_COMMIT_MESSAGE" value="5 day" />
   </component>
 </project>
