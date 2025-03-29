@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高级搜索</title>
+</head>
+<body>
+    <h1>高级搜索</h1>
+    <form method="get" action="{% url 'advanced_search' %}">
+        <div>
+            <label for="q">关键词:</label>
+            <input type="text" name="q" id="q" placeholder="输入关键词...">
+        </div>
+
+        <div>
+            <label for="start_date">开始日期:</label>
+            <input type="date" name="start_date" id="start_date">
+        </div>
+
+        <div>
+            <label for="end_date">结束日期:</label>
+            <input type="date" name="end_date" id="end_date">
+        </div>
+
+        <div>
+            <label>标签:</label>
+            {% for tag in tags %}
+                <div>
+                    <input type="checkbox" name="tags" value="{{ tag.name }}" id="tag_{{ tag.id }}">
+                    <label for="tag_{{ tag.id }}">{{ tag.name }}</label>
+                </div>
+            {% endfor %}
+        </div>
+
+        <button type="submit">搜索</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索笔记</title>
+</head>
+<body>
+    <h1>搜索笔记</h1>
+    <form method="get" action="{% url 'search_notes' %}">
+        <input type="text" name="q" placeholder="输入关键词...">
+        <button type="submit">搜索</button>
+    </form>
+</body>
+</html>
