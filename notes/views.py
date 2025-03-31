@@ -10,13 +10,14 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 def welcome(request):
     return HttpResponse("欢迎来到我的笔记应用！")
 
-def index(request):
-    notes = Note.objects.all()
-    return render(request, 'notes/index.html', {'notes': notes})
+# def index(request):
+#     notes = Note.objects.all()
+#     return render(request, 'notes/index.html', {'notes': notes})
 
 def create_note(request):
     if request.method == 'POST':
@@ -52,10 +53,18 @@ def user_logout(request):
     logout(request)
     return redirect('login')
 
+# @login_required
+# def index(request):
+#     notes = Note.objects.filter(user=request.user)
+#     return render(request, 'notes/index.html', {'notes': notes})
+
 @login_required
 def index(request):
-    notes = Note.objects.filter(user=request.user)
-    return render(request, 'notes/index.html', {'notes': notes})
+    notes = Note.objects.filter(user=request.user).order_by('-created_at')
+    paginator = Paginator(notes, 5)  # 每页显示5条笔记
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'notes/index.html', {'page_obj': page_obj})
 
 @login_required
 def create_note(request):
@@ -65,7 +74,7 @@ def create_note(request):
             note = form.save(commit=False)
             note.user = request.user  # 将当前用户关联到笔记
             note.save()
-            form.save_m2m()  # 保存多对多关系
+            # form.save_m2m()  # 保存多对多关系
             return redirect('index')
     else:
         form = NoteForm()
@@ -81,6 +90,19 @@ def delete_note(request, note_id):
         return redirect('index')
     return render(request, 'notes/delete_note.html', {'note': note})
 
+@login_required
+def edit_note(request, note_id):
+    note = get_object_or_404(Note, id=note_id)
+    if note.user != request.user:
+        return redirect('index')  # 非创建者重定向
+    if request.method == 'POST':
+        form = NoteForm(request.POST, instance=note)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = NoteForm(instance=note)
+    return render(request, 'notes/edit_note.html', {'form': form})
 
 def search_notes(request):
     query = request.GET.get('q', '')
