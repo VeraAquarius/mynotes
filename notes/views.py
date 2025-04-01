@@ -153,4 +153,20 @@ def create_tag(request):
     return render(request, 'notes/create_tag.html', {'form': form})
 
 
+@login_required
+def create_tag(request):
+    if request.method == 'POST':
+        form = TagForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('tag_list')
+    else:
+        form = TagForm()
+    return render(request, 'notes/create_tag.html', {'form': form})
+
+@login_required
+def tag_list(request):
+    tags = Tag.objects.all()
+    return render(request, 'notes/tag_list.html', {'tags': tags})
+
 
