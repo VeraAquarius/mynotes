@@ -10,6 +10,7 @@
     <ul>
         {% for note in page_obj %}
             <li>{{ note.title }} - {{ note.created_at }}
+                <div>标签: {% for tag in note.tags.all %}{{ tag.name }} {% endfor %}</div>
                 <a href="{% url 'edit_note' note.id %}">编辑</a>
                 <a href="{% url 'delete_note' note.id %}">删除</a>
             </li>

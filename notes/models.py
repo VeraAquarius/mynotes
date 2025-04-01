@@ -15,7 +15,7 @@ class Note(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # 添加user字段
-    # tags = models.ManyToManyField(Tag, blank=True)  # 添加多对多关系
+    tags = models.ManyToManyField(Tag, blank=True)  # 添加多对多关系
 
     def __str__(self):
         return self.title

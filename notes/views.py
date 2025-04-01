@@ -74,7 +74,7 @@ def create_note(request):
             note = form.save(commit=False)
             note.user = request.user  # 将当前用户关联到笔记
             note.save()
-            # form.save_m2m()  # 保存多对多关系
+            form.save_m2m()  # 保存多对多关系
             return redirect('index')
     else:
         form = NoteForm()
