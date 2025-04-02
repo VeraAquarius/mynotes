@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的笔记</title>
+        <style>
+        body {
+            font-family: yh, sans-serif;  /* 使用注册的中文字体 */
+        }
+        .note {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .content {
+            font-size: 14px;
+        }
+        .created-at {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>我的笔记</h1>
+    {% for note in notes %}
+        <div class="note">
+            <div class="title">{{ note.title }}</div>
+            <div class="content">{{ note.content }}</div>
+            <div class="created-at">创建时间: {{ note.created_at }}</div>
+        </div>
+    {% endfor %}
+</body>
+</html>

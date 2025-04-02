@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.template.loader import render_to_string
 
 # Create your views here.
 # notes/views.py
@@ -11,6 +12,12 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.core.paginator import Paginator
+from reportlab.pdfgen import canvas
+from io import BytesIO
+import markdown
+from xhtml2pdf import pisa
+from io import BytesIO
+from .utils import font_patch  # 导入字体设置函数
 
 def welcome(request):
     return HttpResponse("欢迎来到我的笔记应用！")
@@ -168,5 +175,61 @@ def create_tag(request):
 def tag_list(request):
     tags = Tag.objects.all()
     return render(request, 'notes/tag_list.html', {'tags': tags})
+
+
+@login_required
+def export_notes(request):
+    if request.method == 'POST':
+        format = request.POST.get('format')
+        notes = Note.objects.filter(user=request.user)
+        if format == 'pdf':
+            return export_to_pdf(notes)
+        elif format == 'markdown':
+            return export_to_markdown(notes)
+    return render(request, 'notes/export.html')
+
+# def export_to_pdf(notes):
+#     buffer = BytesIO()
+#     c = canvas.Canvas(buffer)
+#     c.setFont("Helvetica", 12)
+#     y = 750  # Starting position for text
+#     for note in notes:
+#         c.drawString(50, y, f"标题: {note.title}")
+#         c.drawString(50, y - 15, f"内容: {note.content}")
+#         c.drawString(50, y - 30, f"创建时间: {note.created_at}")
+#         y -= 50  # Move down for the next note
+#         if y < 50:  # New page if there's no more space
+#             c.showPage()
+#             y = 750
+#     c.save()
+#     buffer.seek(0)
+#     response = HttpResponse(buffer, content_type='application/pdf')
+#     response['Content-Disposition'] = 'attachment; filename="notes.pdf"'
+#     return response
+
+@login_required
+def export_to_pdf(request):
+    notes = Note.objects.filter(user=request.user)
+    font_patch()  # 调用字体设置函数
+
+    buffer = BytesIO()
+    response = HttpResponse(buffer, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="notes.pdf"'
+
+    html = render_to_string('notes/pdf_template.html', {'notes': notes})
+    pisa_status = pisa.CreatePDF(html, dest=response, encoding='utf-8')
+
+    if pisa_status.err:
+        return HttpResponse('PDF生成失败')
+    return response
+
+
+def export_to_markdown(notes):
+    markdown_text = "# 我的笔记\n\n"
+    for note in notes:
+        markdown_text += f"## {note.title}\n\n{note.content}\n\n创建时间: {note.created_at}\n\n---\n\n"
+    response = HttpResponse(markdown_text, content_type='text/markdown')
+    response['Content-Disposition'] = 'attachment; filename="notes.md"'
+    return response
 
 

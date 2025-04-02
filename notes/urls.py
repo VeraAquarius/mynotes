@@ -17,4 +17,6 @@ urlpatterns = [
     path('edit/<int:note_id>/', views.edit_note, name='edit_note'),
     path('tags/', views.tag_list, name='tag_list'),
     path('tags/create/', views.create_tag, name='create_tag'),
+    path('export/', views.export_notes, name='export_notes'),
+    path('export/pdf/', views.export_to_pdf, name='export_to_pdf'),
 ]

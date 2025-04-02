@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导出笔记</title>
+</head>
+<body>
+    <h1>导出笔记</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="format">选择导出格式:</label>
+            <select name="format" id="format">
+                <option value="pdf">PDF</option>
+                <option value="markdown">Markdown</option>
+            </select>
+        </div>
+        <button type="submit">导出</button>
+    </form>
+</body>
+</html>
