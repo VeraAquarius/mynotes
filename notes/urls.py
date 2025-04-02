@@ -19,4 +19,7 @@ urlpatterns = [
     path('tags/create/', views.create_tag, name='create_tag'),
     path('export/', views.export_notes, name='export_notes'),
     path('export/pdf/', views.export_to_pdf, name='export_to_pdf'),
+    path('<int:note_id>/', views.note_detail, name='note_detail'),
+    path('delete_comment/<int:comment_id>/', views.delete_comment, name='delete_comment'),
+
 ]

@@ -3,10 +3,10 @@ from django.template.loader import render_to_string
 
 # Create your views here.
 # notes/views.py
-from .models import Note,Tag
+from .models import Note,Tag,Comment
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import NoteForm,TagForm
+from .forms import NoteForm,TagForm,CommentForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -231,5 +231,47 @@ def export_to_markdown(notes):
     response = HttpResponse(markdown_text, content_type='text/markdown')
     response['Content-Disposition'] = 'attachment; filename="notes.md"'
     return response
+
+
+
+@login_required
+def note_detail(request, note_id):
+    note = get_object_or_404(Note, id=note_id)
+    comments = Comment.objects.filter(note=note).order_by('-created_at')
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.note = note
+            comment.user = request.user
+            comment.save()
+            return redirect('note_detail', note_id=note_id)
+    else:
+        form = CommentForm()
+    return render(request, 'notes/note_detail.html', {'note': note, 'comments': comments, 'form': form})
+
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if comment.user != request.user:
+        return redirect('note_detail', note_id=comment.note.id)
+    if request.method == 'POST':
+        comment.delete()
+        return redirect('note_detail', note_id=comment.note.id)
+    return render(request, 'notes/delete_comment.html', {'comment': comment})
+
+# @login_required
+# def edit_comment(request, comment_id):
+#     comment = get_object_or_404(Comment, id=comment_id)
+#     if comment.user != request.user:
+#         return redirect('note_detail', note_id=comment.note.id)
+#     if request.method == 'POST':
+#         form = CommentForm(request.POST, instance=comment)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('note_detail', note_id=comment.note.id)
+#     else:
+#         form = CommentForm(instance=comment)
+#     return render(request, 'notes/edit_comment.html', {'form': form})
 
 

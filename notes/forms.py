@@ -1,6 +1,6 @@
 # notes/forms.py
 from django import forms
-from .models import Note,Tag
+from .models import Note,Tag, Comment
 
 class NoteForm(forms.ModelForm):
     tags = forms.ModelMultipleChoiceField(
@@ -18,5 +18,10 @@ class TagForm(forms.ModelForm):
     class Meta:
         model = Tag
         fields = ['name']
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
 
 
