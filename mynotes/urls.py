@@ -14,15 +14,18 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 # 配置URL路由到mynotes/urls.py
 from django.contrib import admin
 from django.urls import path
 from notes import views
 from django.urls import path, include  # 确保导入了include
+import debug_toolbar
 
 
 urlpatterns = [
     # path("admin/", admin.site.urls),
     path('notes/', include('notes.urls')),
+    path('__debug__/', include(debug_toolbar.urls)),
 
 ]

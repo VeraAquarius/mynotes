@@ -25,3 +25,7 @@ class CommentForm(forms.ModelForm):
         fields = ['content']
 
 
+
+class ShareNoteForm(forms.Form):
+    email = forms.EmailField(label='分享给', required=True)
+

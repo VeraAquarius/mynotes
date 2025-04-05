@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分享笔记</title>
+</head>
+<body>
+    <h1>分享笔记</h1>
+     {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">分享</button>
+    </form>
+    <a href="{% url 'index' %}">取消</a>
+</body>
+</html>

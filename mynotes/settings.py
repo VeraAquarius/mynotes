@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-v2fi#z^6!fhd3j=4y-wp&+n!&(z@)$7u2#e82vyh3w8cc#&kye
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'notes',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +50,14 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
+
+# 配置调试面板（可选）
+DEBUG_TOOLBAR_PANELS = [
+    'debug_toolbar.panels.sql.SQLPanel',
+    'debug_toolbar.panels.headers.HeadersPanel',
+    # 其他面板...
 ]
 
 ROOT_URLCONF = "mynotes.urls"

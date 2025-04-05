@@ -29,5 +29,7 @@ urlpatterns = [
     path('permanent_delete/<int:note_id>/', views.permanent_delete_note, name='permanent_delete_note'),
     path('empty_trash/', views.empty_trash, name='empty_trash'),
     path('empty_trash/success/', views.empty_trash_success, name='empty_trash_success'),
+    path('share/<int:note_id>/', views.share_note, name='share_note'),
+    path('shared/<int:note_id>/', views.shared_note, name='shared_note'),
 
 ]

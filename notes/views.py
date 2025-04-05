@@ -1,12 +1,13 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.template.loader import render_to_string
 
 # Create your views here.
 # notes/views.py
-from .models import Note,Tag,Comment, CommentHistory
+from .models import Note,Tag,Comment, CommentHistory, SharedNote
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import NoteForm,TagForm,CommentForm
+from .forms import NoteForm,TagForm,CommentForm,ShareNoteForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -18,6 +19,9 @@ import markdown
 from xhtml2pdf import pisa
 from io import BytesIO
 from .utils import font_patch  # 导入字体设置函数
+from django.core.mail import send_mail
+from django.conf import settings
+
 
 def welcome(request):
     return HttpResponse("欢迎来到我的笔记应用！")
@@ -330,5 +334,43 @@ def empty_trash(request):
 @login_required
 def empty_trash_success(request):
     return render(request, 'notes/empty_trash_success.html')
+
+
+@login_required
+def share_note(request, note_id):
+    note = get_object_or_404(Note, id=note_id)
+    if note.user != request.user:
+        return redirect('index')
+    if request.method == 'POST':
+        form = ShareNoteForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            try:
+                recipient = get_object_or_404(User, email=email)
+                SharedNote.objects.create(note=note, shared_with=recipient, shared_by=request.user)
+                # 发送邮件通知
+                send_mail(
+                    '笔记分享',
+                    f'用户{request.user.username}分享了一篇笔记给您: http://127.0.0.1:8000/notes/shared/{note.id}/',
+                    settings.DEFAULT_FROM_EMAIL,
+                    [email],
+                    fail_silently=False,
+                )
+                return redirect('index')
+            except User.DoesNotExist:
+                return render(request, 'notes/share_note.html', {'form': form, 'note': note, 'error': '用户不存在'})
+    else:
+        form = ShareNoteForm()
+    return render(request, 'notes/share_note.html', {'form': form, 'note': note})
+
+
+@login_required
+def shared_note(request, note_id):
+    note = get_object_or_404(Note, id=note_id)
+    shared_notes = SharedNote.objects.filter(note=note, shared_with=request.user)
+    if not shared_notes.exists() and note.user != request.user:
+        return redirect('index')
+    return render(request, 'notes/shared_note.html', {'note': note})
+
 
 

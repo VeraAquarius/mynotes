@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 20 笔记删除以及回收站功能">
-      <change afterPath="$PROJECT_DIR$/templates/notes/empty_trash.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/notes/empty_trash_success.html" afterDir="false" />
+    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 21 笔记回收站功 清空回收站">
+      <change afterPath="$PROJECT_DIR$/templates/notes/share_note.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/notes/shared_note.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mynotes/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mynotes/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mynotes/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mynotes/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/notes/trash.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/trash.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +128,7 @@
       <workItem from="1743832635865" duration="16000" />
       <workItem from="1743832696415" duration="21000" />
       <workItem from="1743832772984" duration="41000" />
-      <workItem from="1743834426563" duration="7998000" />
+      <workItem from="1743834426563" duration="12481000" />
     </task>
     <task id="LOCAL-00001" summary="3 day">
       <option name="closed" value="true" />
@@ -295,7 +298,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743848587117</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="day 21 笔记回收站功 清空回收站">
+      <option name="closed" value="true" />
+      <created>1743850239843</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1743850239843</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,25 +395,21 @@
     <MESSAGE value="day 18 评论笔记历史展示" />
     <MESSAGE value="day 19 评论笔记历史 与笔记 评论 结合展示" />
     <MESSAGE value="day 20 笔记删除以及回收站功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="day 20 笔记删除以及回收站功能" />
+    <MESSAGE value="day 21 笔记回收站功 清空回收站" />
+    <option name="LAST_COMMIT_MESSAGE" value="day 21 笔记回收站功 清空回收站" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/notes/views.py</url>
-          <line>91</line>
+          <line>95</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/notes/views.py</url>
-          <line>92</line>
+          <line>96</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/notes/views.py</url>
-          <line>213</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import uuid
 
 # Create your models here.
 
@@ -44,5 +45,16 @@ class CommentHistory(models.Model):
     def __str__(self):
         return f"History for comment {self.comment.id} at {self.changed_at}"
 
+class SharedNote(models.Model):
+    note = models.ForeignKey(Note, on_delete=models.CASCADE)
+    shared_with = models.ForeignKey(User, on_delete=models.CASCADE, related_name='shared_with')
+    shared_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='shared_by')
+    shared_at = models.DateTimeField(auto_now_add=True)
+    share_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+
+    def __str__(self):
+        return f"Shared {self.note.title} with {self.shared_with.username}"
+
+    
 
 
