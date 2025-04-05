@@ -30,5 +30,13 @@ class Comment(models.Model):
         return f"Comment by {self.user.username} on {self.note.title}"
 
 
+class CommentHistory(models.Model):
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+    content = models.TextField()
+    changed_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"History for comment {self.comment.id} at {self.changed_at}"
+
 
 

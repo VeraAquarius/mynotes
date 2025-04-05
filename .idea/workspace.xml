@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 17 编辑评论笔记">
-      <change afterPath="$PROJECT_DIR$/templates/notes/edit_comment.html" afterDir="false" />
+    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 18 评论笔记历史展示">
+      <change afterPath="$PROJECT_DIR$/notes/migrations/0007_commenthistory.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/notes/comment_history.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/notes/note_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/note_detail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +125,7 @@
       <workItem from="1743832635865" duration="16000" />
       <workItem from="1743832696415" duration="21000" />
       <workItem from="1743832772984" duration="41000" />
-      <workItem from="1743834426563" duration="611000" />
+      <workItem from="1743834426563" duration="3126000" />
     </task>
     <task id="LOCAL-00001" summary="3 day">
       <option name="closed" value="true" />
@@ -262,7 +263,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743606565301</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="day 17 编辑评论笔记">
+      <option name="closed" value="true" />
+      <created>1743842561684</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1743842561684</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,6 +281,7 @@
     <option name="OPEN_GENERIC_TABS">
       <map>
         <entry key="8208a485-0b33-4fcf-92ae-81b197544f2f" value="TOOL_WINDOW" />
+        <entry key="c2605733-8ba6-47fd-bea6-4c8f95d9e2d1" value="TOOL_WINDOW" />
       </map>
     </option>
     <option name="TAB_STATES">
@@ -306,6 +316,31 @@
             <State />
           </value>
         </entry>
+        <entry key="c2605733-8ba6-47fd-bea6-4c8f95d9e2d1">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+            </State>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
@@ -321,7 +356,9 @@
     <MESSAGE value="13 day 添加标签功能" />
     <MESSAGE value="15 day 导出笔记" />
     <MESSAGE value="day 16 评论笔记" />
-    <option name="LAST_COMMIT_MESSAGE" value="day 16 评论笔记" />
+    <MESSAGE value="day 17 编辑评论笔记" />
+    <MESSAGE value="day 18 评论笔记历史展示" />
+    <option name="LAST_COMMIT_MESSAGE" value="day 18 评论笔记历史展示" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

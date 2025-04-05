@@ -3,7 +3,7 @@ from django.template.loader import render_to_string
 
 # Create your views here.
 # notes/views.py
-from .models import Note,Tag,Comment
+from .models import Note,Tag,Comment, CommentHistory
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import NoteForm,TagForm,CommentForm
@@ -268,10 +268,19 @@ def edit_comment(request, comment_id):
     if request.method == 'POST':
         form = CommentForm(request.POST, instance=comment)
         if form.is_valid():
+            # 记录历史
+            CommentHistory.objects.create(comment=comment, content=comment.content)
             form.save()
             return redirect('note_detail', note_id=comment.note.id)
     else:
         form = CommentForm(instance=comment)
     return render(request, 'notes/edit_comment.html', {'form': form, 'comment': comment})
+
+
+@login_required
+def comment_history(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    histories = CommentHistory.objects.filter(comment=comment).order_by('-changed_at')
+    return render(request, 'notes/comment_history.html', {'histories': histories, 'comment': comment})
 
 
