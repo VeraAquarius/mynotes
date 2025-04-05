@@ -21,5 +21,6 @@ urlpatterns = [
     path('export/pdf/', views.export_to_pdf, name='export_to_pdf'),
     path('<int:note_id>/', views.note_detail, name='note_detail'),
     path('delete_comment/<int:comment_id>/', views.delete_comment, name='delete_comment'),
+    path('edit_comment/<int:comment_id>/', views.edit_comment, name='edit_comment'),
 
 ]
