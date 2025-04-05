@@ -29,6 +29,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = '15821886267@163.com'
+EMAIL_HOST_PASSWORD = 'test'
+DEFAULT_FROM_EMAIL = '15821886267@163.com'
 
 # Application definition
 

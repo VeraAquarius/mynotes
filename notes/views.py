@@ -44,6 +44,7 @@ def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
+            # user = form.save()
             form.save()
             return redirect('login')
     else:
@@ -346,7 +347,7 @@ def share_note(request, note_id):
         if form.is_valid():
             email = form.cleaned_data['email']
             try:
-                recipient = get_object_or_404(User, email=email)
+                recipient = User.objects.get(email=email)
                 SharedNote.objects.create(note=note, shared_with=recipient, shared_by=request.user)
                 # 发送邮件通知
                 send_mail(
@@ -356,7 +357,7 @@ def share_note(request, note_id):
                     [email],
                     fail_silently=False,
                 )
-                return redirect('index')
+                return render(request, 'notes/share_success.html', {'note': note})
             except User.DoesNotExist:
                 return render(request, 'notes/share_note.html', {'form': form, 'note': note, 'error': '用户不存在'})
     else:
@@ -372,5 +373,21 @@ def shared_note(request, note_id):
         return redirect('index')
     return render(request, 'notes/shared_note.html', {'note': note})
 
+
+@login_required
+def view_sharable_notes(request):
+    notes = Note.objects.filter(user=request.user, is_deleted=False)
+    return render(request, 'notes/sharable_notes.html', {'notes': notes})
+
+
+def send_email_test(request):
+    send_mail(
+        '测试邮件',
+        '这是一封测试邮件。',
+        settings.DEFAULT_FROM_EMAIL,
+        ['15821886267@163.com'],
+        fail_silently=False,
+    )
+    return render(request, 'notes/email_test.html')
 
 

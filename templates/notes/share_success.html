@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分享成功</title>
+</head>
+<body>
+    <h1>分享成功</h1>
+    <p>笔记 "{{ note.title }}" 已成功分享给目标用户。</p>
+    <a href="{% url 'view_sharable_notes' %}">继续分享其他笔记</a>
+    <a href="{% url 'index' %}">返回笔记列表</a>
+</body>
+</html>

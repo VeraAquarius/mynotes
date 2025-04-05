@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>可分享的笔记</title>
+</head>
+<body>
+    <h1>可分享的笔记</h1>
+    <ul>
+        {% for note in notes %}
+            <li>
+                {{ note.title }} - {{ note.created_at }}
+                <a href="{% url 'share_note' note.id %}">分享</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'index' %}">返回笔记列表</a>
+</body>
+</html>
