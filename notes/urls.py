@@ -33,5 +33,9 @@ urlpatterns = [
     path('shared/<int:note_id>/', views.shared_note, name='shared_note'),
     path('sharable_notes/', views.view_sharable_notes, name='view_sharable_notes'),
     path('email_test/', views.send_email_test, name='email_test'),
+    path('update_email/', views.update_email, name='update_email'),
+    path('profile/', views.profile, name='profile'),
+    path('update_profile/', views.update_profile, name='update_profile'),
+    path('change_password/', views.change_password, name='change_password'),
 
 ]

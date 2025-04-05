@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人资料</title>
+</head>
+<body>
+    <h1>个人资料</h1>
+    <p>用户名: {{ request.user.username }}</p>
+    <p>邮箱: {{ request.user.email }}</p>
+
+    <h2>分享的笔记</h2>
+    <ul>
+        {% for shared_note in shared_notes %}
+            <li>
+                {{ shared_note.note.title }} - {{ shared_note.note.content }}
+                <p>分享给: {{ shared_note.shared_with.username }}</p>
+                <p>分享时间: {{ shared_note.shared_at }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>操作</h2>
+    <a href="{% url 'update_profile' %}">更新个人资料</a>
+    <a href="{% url 'update_email' %}">更新邮箱</a>
+    <a href="{% url 'change_password' %}">修改密码</a>
+</body>
+</html>

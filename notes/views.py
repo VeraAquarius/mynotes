@@ -7,7 +7,8 @@ from django.template.loader import render_to_string
 from .models import Note,Tag,Comment, CommentHistory, SharedNote
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import NoteForm,TagForm,CommentForm,ShareNoteForm,CustomUserCreationForm
+from .forms import (NoteForm,TagForm,CommentForm,ShareNoteForm,CustomUserCreationForm,
+                    EmailUpdateForm, CustomPasswordChangeForm,ProfileForm)
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -21,6 +22,7 @@ from io import BytesIO
 from .utils import font_patch  # 导入字体设置函数
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib import messages
 
 
 def welcome(request):
@@ -389,5 +391,50 @@ def send_email_test(request):
         fail_silently=False,
     )
     return render(request, 'notes/email_test.html')
+
+
+@login_required
+def update_email(request):
+    if request.method == 'POST':
+        form = EmailUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, '邮箱已更新')
+            return redirect('profile')
+    else:
+        form = EmailUpdateForm(instance=request.user)
+    return render(request, 'notes/update_email.html', {'form': form})
+
+
+
+@login_required
+def profile(request):
+    shared_notes = SharedNote.objects.filter(shared_by=request.user)
+    return render(request, 'notes/profile.html', {'shared_notes': shared_notes})
+
+@login_required
+def update_profile(request):
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, '个人资料已更新')
+            return redirect('profile')
+    else:
+        form = ProfileForm(instance=request.user)
+    return render(request, 'notes/update_profile.html', {'form': form})
+
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = CustomPasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, '密码已更新')
+            return redirect('profile')
+    else:
+        form = CustomPasswordChangeForm(user=request.user)
+    return render(request, 'notes/change_password.html', {'form': form})
 
 

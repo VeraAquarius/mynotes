@@ -4,18 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 22 笔记分享">
-      <change afterPath="$PROJECT_DIR$/templates/notes/email_test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/notes/sharable_notes.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/notes/share_success.html" afterDir="false" />
+    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 24 查看可分享的笔记，并且分享笔记之后邮件通知">
+      <change afterPath="$PROJECT_DIR$/templates/notes/change_password.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/notes/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/notes/update_email.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/notes/update_profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mynotes/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mynotes/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mynotes/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mynotes/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/notes/share_note.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/share_note.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +126,7 @@
       <workItem from="1743832635865" duration="16000" />
       <workItem from="1743832696415" duration="21000" />
       <workItem from="1743832772984" duration="41000" />
-      <workItem from="1743834426563" duration="17046000" />
+      <workItem from="1743834426563" duration="19499000" />
     </task>
     <task id="LOCAL-00001" summary="3 day">
       <option name="closed" value="true" />
@@ -315,7 +312,23 @@
       <option name="project" value="LOCAL" />
       <updated>1743856610325</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="day 23 用户注册添加邮箱信息">
+      <option name="closed" value="true" />
+      <created>1743860946403</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1743860946403</updated>
+    </task>
+    <task id="LOCAL-00025" summary="day 24 查看可分享的笔记，并且分享笔记之后邮件通知">
+      <option name="closed" value="true" />
+      <created>1743861045238</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1743861045238</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -406,25 +419,22 @@
     <MESSAGE value="day 20 笔记删除以及回收站功能" />
     <MESSAGE value="day 21 笔记回收站功 清空回收站" />
     <MESSAGE value="day 22 笔记分享" />
-    <option name="LAST_COMMIT_MESSAGE" value="day 22 笔记分享" />
+    <MESSAGE value="day 23 用户注册添加邮箱信息" />
+    <MESSAGE value="day 24 查看可分享的笔记，并且分享笔记之后邮件通知" />
+    <option name="LAST_COMMIT_MESSAGE" value="day 24 查看可分享的笔记，并且分享笔记之后邮件通知" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/notes/views.py</url>
-          <line>96</line>
+          <line>98</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/notes/views.py</url>
-          <line>97</line>
+          <line>99</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/notes/views.py</url>
-          <line>347</line>
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
