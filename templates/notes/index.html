@@ -7,6 +7,7 @@
 <body>
  <h1>笔记列表</h1>
  <a href="{% url 'create_note' %}">创建新笔记</a>
+ <a href="{% url 'trash' %}">回收站</a>
     <ul>
         {% for note in page_obj %}
             <li>{{ note.title }} - {{ note.created_at }}

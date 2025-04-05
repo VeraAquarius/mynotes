@@ -24,5 +24,9 @@ urlpatterns = [
     path('edit_comment/<int:comment_id>/', views.edit_comment, name='edit_comment'),
     path('comment_history/<int:comment_id>/', views.comment_history, name='comment_history'),
     path('comment_detail/<int:comment_id>/', views.comment_detail, name='comment_detail'),
+    path('trash/', views.trash, name='trash'),
+    path('recover/<int:note_id>/', views.recover_note, name='recover_note'),
+    path('permanent_delete/<int:note_id>/', views.permanent_delete_note, name='permanent_delete_note'),
+    # path('empty_trash/', views.empty_trash, name='empty_trash'),
 
 ]

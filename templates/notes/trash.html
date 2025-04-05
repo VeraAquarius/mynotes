@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回收站</title>
+</head>
+<body>
+    <h1>回收站</h1>
+    <ul>
+        {% for note in notes %}
+            <li>
+                {{ note.title }} - {{ note.created_at }}
+                <a href="{% url 'recover_note' note.id %}">恢复</a>
+                <a href="{% url 'permanent_delete_note' note.id %}">彻底删除</a>
+            </li>
+        {% endfor %}
+    </ul>
+{#    <a href="{% url 'empty_trash' %}">清空回收站</a>#}
+    <a href="{% url 'index' %}">返回笔记列表</a>
+</body>
+</html>

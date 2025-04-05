@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>彻底删除笔记</title>
+</head>
+<body>
+    <h1>彻底删除笔记</h1>
+    <p>确定要彻底删除笔记 "{{ note.title }}" 吗？</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">确认彻底删除</button>
+        <a href="{% url 'trash' %}">取消</a>
+    </form>
+</body>
+</html>

@@ -87,13 +87,14 @@ def create_note(request):
         form = NoteForm()
     return render(request, 'notes/create_note.html', {'form': form})
 
-# @login_required
+@login_required
 def delete_note(request, note_id):
     note = get_object_or_404(Note, id=note_id)
     if note.user != request.user:
         return redirect('index')  # 非创建者重定向
     if request.method == 'POST':
-        note.delete()
+        note.is_deleted = True
+        note.save()
         return redirect('index')
     return render(request, 'notes/delete_note.html', {'note': note})
 
@@ -288,5 +289,33 @@ def comment_history(request, comment_id):
 def comment_detail(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     return render(request, 'notes/comment_detail.html', {'comment': comment})
+
+
+
+@login_required
+def recover_note(request, note_id):
+    note = get_object_or_404(Note, id=note_id)
+    if note.user != request.user:
+        return redirect('trash')
+    if request.method == 'POST':
+        note.is_deleted = False
+        note.save()
+        return redirect('index')
+    return render(request, 'notes/recover_note.html', {'note': note})
+
+@login_required
+def trash(request):
+    notes = Note.objects.filter(user=request.user, is_deleted=True)
+    return render(request, 'notes/trash.html', {'notes': notes})
+
+@login_required
+def permanent_delete_note(request, note_id):
+    note = get_object_or_404(Note, id=note_id)
+    if note.user != request.user:
+        return redirect('trash')
+    if request.method == 'POST':
+        note.delete()
+        return redirect('trash')
+    return render(request, 'notes/permanent_delete_note.html', {'note': note})
 
 
