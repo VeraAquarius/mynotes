@@ -7,7 +7,7 @@ from django.template.loader import render_to_string
 from .models import Note,Tag,Comment, CommentHistory, SharedNote
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import NoteForm,TagForm,CommentForm,ShareNoteForm
+from .forms import NoteForm,TagForm,CommentForm,ShareNoteForm,CustomUserCreationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -42,12 +42,12 @@ def create_note(request):
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('login')
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'notes/register.html', {'form': form})
 
 def user_login(request):

@@ -31,5 +31,7 @@ urlpatterns = [
     path('empty_trash/success/', views.empty_trash_success, name='empty_trash_success'),
     path('share/<int:note_id>/', views.share_note, name='share_note'),
     path('shared/<int:note_id>/', views.shared_note, name='shared_note'),
+    path('sharable_notes/', views.view_sharable_notes, name='view_sharable_notes'),
+    path('email_test/', views.send_email_test, name='email_test'),
 
 ]
