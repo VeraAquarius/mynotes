@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 26 更新用户的个人信息">
-      <change afterPath="$PROJECT_DIR$/templates/notes/restore_notes.html" afterDir="false" />
+    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 27 备份和恢复笔记内容">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -122,7 +120,7 @@
       <workItem from="1743832635865" duration="16000" />
       <workItem from="1743832696415" duration="21000" />
       <workItem from="1743832772984" duration="41000" />
-      <workItem from="1743834426563" duration="22454000" />
+      <workItem from="1743834426563" duration="23203000" />
     </task>
     <task id="LOCAL-00001" summary="3 day">
       <option name="closed" value="true" />
@@ -348,7 +346,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743865783092</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="day 27 备份和恢复笔记内容">
+      <option name="closed" value="true" />
+      <created>1743868652479</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1743868652479</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -444,19 +450,20 @@
     <MESSAGE value="day 25 查看用户的个人信息" />
     <MESSAGE value="day 25 更新用户的个人信息" />
     <MESSAGE value="day 26 更新用户的个人信息" />
-    <option name="LAST_COMMIT_MESSAGE" value="day 26 更新用户的个人信息" />
+    <MESSAGE value="day 27 备份和恢复笔记内容" />
+    <option name="LAST_COMMIT_MESSAGE" value="day 27 备份和恢复笔记内容" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/notes/views.py</url>
-          <line>102</line>
+          <line>103</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/notes/views.py</url>
-          <line>103</line>
+          <line>104</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

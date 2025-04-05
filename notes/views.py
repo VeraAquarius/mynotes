@@ -27,6 +27,7 @@ from .utils import font_patch  # 导入字体设置函数
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib import messages
+from cryptography.fernet import Fernet
 
 
 def welcome(request):
@@ -444,6 +445,10 @@ def change_password(request):
 
 @login_required
 def backup_notes(request):
+    key = load_key()
+    if not key:
+        key = generate_key()
+        save_key(key)
     notes = Note.objects.filter(user=request.user)
     data = [
         {
@@ -457,19 +462,30 @@ def backup_notes(request):
         for note in notes
     ]
     json_data = json.dumps(data, ensure_ascii=False)
-    response = HttpResponse(json_data, content_type='application/json')
-    response['Content-Disposition'] = 'attachment; filename="notes_backup.json"'
+    encrypted_data = encrypt_data(json_data, key)
+    # response = HttpResponse(json_data, content_type='application/json')
+    # response['Content-Disposition'] = 'attachment; filename="notes_backup.json"'
+    response = HttpResponse(encrypted_data, content_type='application/octet-stream')
+    response['Content-Disposition'] = 'attachment; filename="notes_backup.enc"'
     return response
 
 @login_required
 def restore_notes(request):
+    key = load_key()
+    if not key:
+        messages.error(request, '加密密钥不存在，请先进行备份操作以生成密钥。')
+        return redirect('index')
     if request.method == 'POST':
         uploaded_file = request.FILES['backup_file']
         fs = FileSystemStorage()
         file_path = fs.save(uploaded_file.name, uploaded_file)
-        with io.open(fs.path(file_path), 'r', encoding='utf-8')  as f:
+        # with io.open(fs.path(file_path), 'rb', encoding='utf-8')  as f:
+        with fs.open(file_path, 'rb') as f:
+            encrypted_data = f.read()
             try:
-                data = json.load(f)
+                # data = json.load(f)
+                decrypted_data = decrypt_data(encrypted_data, key)
+                data = json.loads(decrypted_data)
                 for item in data:
                     note = Note.objects.filter(id=item['id'], user=request.user).first()
                     if note:
@@ -482,6 +498,36 @@ def restore_notes(request):
         fs.delete(file_path)
         return redirect('index')
     return render(request, 'notes/restore_notes.html')
+
+# 生成加密密钥
+def generate_key():
+    return Fernet.generate_key()
+
+# 加载加密密钥
+def load_key():
+    try:
+        with open('secret.key', 'rb') as key_file:
+            return key_file.read()
+    except FileNotFoundError:
+        return None
+
+# 保存加密密钥
+def save_key(key):
+    with open('secret.key', 'wb') as key_file:
+        key_file.write(key)
+
+# 加密数据
+def encrypt_data(data, key):
+    fernet = Fernet(key)
+    encrypted_data = fernet.encrypt(data.encode())
+    return encrypted_data
+
+# 解密数据
+def decrypt_data(encrypted_data, key):
+    fernet = Fernet(key)
+    decrypted_data = fernet.decrypt(encrypted_data).decode()
+    return decrypted_data
+
 
 
 
