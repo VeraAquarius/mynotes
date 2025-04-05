@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>更新邮箱</title>
+</head>
+<body>
+    <h1>更新邮箱</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">保存</button>
+    </form>
+    <a href="{% url 'profile' %}">取消</a>
+</body>
+</html>

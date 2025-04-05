@@ -1,7 +1,7 @@
 # notes/forms.py
 from django import forms
 from .models import Note,Tag, Comment
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm,PasswordChangeForm
 from django.contrib.auth.models import User
 
 
@@ -39,5 +39,28 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
+
+
+class EmailUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['email']
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if User.objects.filter(email=email).exclude(id=self.instance.id).exists():
+            raise forms.ValidationError('此邮箱已被使用')
+        return email
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email']
+
+class CustomPasswordChangeForm(PasswordChangeForm):
+    pass
+
+
 
 
