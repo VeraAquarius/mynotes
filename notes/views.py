@@ -17,6 +17,10 @@ from django.core.paginator import Paginator
 from reportlab.pdfgen import canvas
 from io import BytesIO
 import markdown
+import json
+import io
+from django.core.files.base import ContentFile
+from django.core.files.storage import FileSystemStorage
 from xhtml2pdf import pisa
 from io import BytesIO
 from .utils import font_patch  # 导入字体设置函数
@@ -436,5 +440,48 @@ def change_password(request):
     else:
         form = CustomPasswordChangeForm(user=request.user)
     return render(request, 'notes/change_password.html', {'form': form})
+
+
+@login_required
+def backup_notes(request):
+    notes = Note.objects.filter(user=request.user)
+    data = [
+        {
+            'id': note.id,
+            'title': note.title,
+            'content': note.content,
+            'created_at': note.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+            'updated_at': note.updated_at.strftime('%Y-%m-%d %H:%M:%S'),
+            'tags': list(note.tags.values_list('name', flat=True)),
+        }
+        for note in notes
+    ]
+    json_data = json.dumps(data, ensure_ascii=False)
+    response = HttpResponse(json_data, content_type='application/json')
+    response['Content-Disposition'] = 'attachment; filename="notes_backup.json"'
+    return response
+
+@login_required
+def restore_notes(request):
+    if request.method == 'POST':
+        uploaded_file = request.FILES['backup_file']
+        fs = FileSystemStorage()
+        file_path = fs.save(uploaded_file.name, uploaded_file)
+        with io.open(fs.path(file_path), 'r', encoding='utf-8')  as f:
+            try:
+                data = json.load(f)
+                for item in data:
+                    note = Note.objects.filter(id=item['id'], user=request.user).first()
+                    if note:
+                        note.title = item['title']
+                        note.content = item['content']
+                        note.save()
+                messages.success(request, '数据恢复成功')
+            except json.JSONDecodeError:
+                messages.error(request, '无效的备份文件格式')
+        fs.delete(file_path)
+        return redirect('index')
+    return render(request, 'notes/restore_notes.html')
+
 
 

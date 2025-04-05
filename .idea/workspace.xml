@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 24 查看可分享的笔记，并且分享笔记之后邮件通知">
-      <change afterPath="$PROJECT_DIR$/templates/notes/change_password.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/notes/profile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/notes/update_email.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/notes/update_profile.html" afterDir="false" />
+    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 26 更新用户的个人信息">
+      <change afterPath="$PROJECT_DIR$/templates/notes/restore_notes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/views.py" afterDir="false" />
     </list>
@@ -126,7 +122,7 @@
       <workItem from="1743832635865" duration="16000" />
       <workItem from="1743832696415" duration="21000" />
       <workItem from="1743832772984" duration="41000" />
-      <workItem from="1743834426563" duration="19499000" />
+      <workItem from="1743834426563" duration="22454000" />
     </task>
     <task id="LOCAL-00001" summary="3 day">
       <option name="closed" value="true" />
@@ -328,7 +324,31 @@
       <option name="project" value="LOCAL" />
       <updated>1743861045238</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="day 25 查看用户的个人信息">
+      <option name="closed" value="true" />
+      <created>1743865745020</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1743865745020</updated>
+    </task>
+    <task id="LOCAL-00027" summary="day 25 更新用户的个人信息">
+      <option name="closed" value="true" />
+      <created>1743865764776</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1743865764776</updated>
+    </task>
+    <task id="LOCAL-00028" summary="day 26 更新用户的个人信息">
+      <option name="closed" value="true" />
+      <created>1743865783092</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1743865783092</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,19 +441,22 @@
     <MESSAGE value="day 22 笔记分享" />
     <MESSAGE value="day 23 用户注册添加邮箱信息" />
     <MESSAGE value="day 24 查看可分享的笔记，并且分享笔记之后邮件通知" />
-    <option name="LAST_COMMIT_MESSAGE" value="day 24 查看可分享的笔记，并且分享笔记之后邮件通知" />
+    <MESSAGE value="day 25 查看用户的个人信息" />
+    <MESSAGE value="day 25 更新用户的个人信息" />
+    <MESSAGE value="day 26 更新用户的个人信息" />
+    <option name="LAST_COMMIT_MESSAGE" value="day 26 更新用户的个人信息" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/notes/views.py</url>
-          <line>98</line>
+          <line>102</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/notes/views.py</url>
-          <line>99</line>
+          <line>103</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
