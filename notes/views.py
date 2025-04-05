@@ -284,3 +284,9 @@ def comment_history(request, comment_id):
     return render(request, 'notes/comment_history.html', {'histories': histories, 'comment': comment})
 
 
+@login_required
+def comment_detail(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    return render(request, 'notes/comment_detail.html', {'comment': comment})
+
+

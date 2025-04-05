@@ -29,6 +29,11 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment by {self.user.username} on {self.note.title}"
 
+    @property
+    def histories(self):
+        return self.commenthistory_set.all().order_by('-changed_at')
+
+
 
 class CommentHistory(models.Model):
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE)

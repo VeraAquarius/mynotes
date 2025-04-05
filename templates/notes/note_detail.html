@@ -27,6 +27,7 @@
                 {% if comment.user == request.user %}
                     <a href="{% url 'edit_comment' comment.id %}">编辑</a>
                     <a href="{% url 'delete_comment' comment.id %}">删除</a>
+                    <a href="{% url 'comment_detail' comment.id %}">查看历史</a>
                 {% endif %}
             </li>
         {% endfor %}

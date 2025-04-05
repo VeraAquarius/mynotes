@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 18 评论笔记历史展示">
-      <change afterPath="$PROJECT_DIR$/notes/migrations/0007_commenthistory.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/notes/comment_history.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/notes/comment_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/note_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/note_detail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +124,7 @@
       <workItem from="1743832635865" duration="16000" />
       <workItem from="1743832696415" duration="21000" />
       <workItem from="1743832772984" duration="41000" />
-      <workItem from="1743834426563" duration="3126000" />
+      <workItem from="1743834426563" duration="4026000" />
     </task>
     <task id="LOCAL-00001" summary="3 day">
       <option name="closed" value="true" />
@@ -271,7 +270,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743842561684</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="day 18 评论笔记历史展示">
+      <option name="closed" value="true" />
+      <created>1743843672078</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1743843672078</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
