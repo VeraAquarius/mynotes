@@ -27,6 +27,7 @@ urlpatterns = [
     path('trash/', views.trash, name='trash'),
     path('recover/<int:note_id>/', views.recover_note, name='recover_note'),
     path('permanent_delete/<int:note_id>/', views.permanent_delete_note, name='permanent_delete_note'),
-    # path('empty_trash/', views.empty_trash, name='empty_trash'),
+    path('empty_trash/', views.empty_trash, name='empty_trash'),
+    path('empty_trash/success/', views.empty_trash_success, name='empty_trash_success'),
 
 ]

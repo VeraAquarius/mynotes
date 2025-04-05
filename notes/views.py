@@ -67,7 +67,7 @@ def user_logout(request):
 
 @login_required
 def index(request):
-    notes = Note.objects.filter(user=request.user).order_by('-created_at')
+    notes = Note.objects.filter(user=request.user,is_deleted=False).order_by('-created_at')
     paginator = Paginator(notes, 5)  # 每页显示5条笔记
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -317,5 +317,18 @@ def permanent_delete_note(request, note_id):
         note.delete()
         return redirect('trash')
     return render(request, 'notes/permanent_delete_note.html', {'note': note})
+
+
+@login_required
+def empty_trash(request):
+    if request.method == 'POST':
+        notes = Note.objects.filter(user=request.user, is_deleted=True)
+        notes.delete()
+        return redirect('empty_trash_success')
+    return render(request, 'notes/empty_trash.html')
+
+@login_required
+def empty_trash_success(request):
+    return render(request, 'notes/empty_trash_success.html')
 
 

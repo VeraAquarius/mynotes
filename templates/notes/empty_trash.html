@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>清空回收站</title>
+</head>
+<body>
+    <h1>清空回收站</h1>
+    <p>确定要清空回收站吗？此操作将永久删除所有已删除的笔记。</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">确认清空</button>
+        <a href="{% url 'trash' %}">取消</a>
+    </form>
+</body>
+</html>
