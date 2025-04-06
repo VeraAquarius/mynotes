@@ -29,7 +29,7 @@ from django.conf import settings
 from django.contrib import messages
 from cryptography.fernet import Fernet
 from openpyxl import Workbook
-
+import pandas as pd
 
 def welcome(request):
     return HttpResponse("欢迎来到我的笔记应用！")
@@ -545,33 +545,51 @@ def decrypt_data(encrypted_data, key):
     return decrypted_data
 
 
+# @login_required
+# def export_to_excel(request, note_id):
+#     note = get_object_or_404(Note, id=note_id, user=request.user)
+#     wb = Workbook()
+#     ws = wb.active
+#     ws.title = "笔记内容"
+#
+#     # 写入表头
+#     ws.append(['标题', '内容', '创建时间', '更新时间'])
+#
+#     # 写入笔记数据
+#     ws.append([
+#         note.title,
+#         note.content,
+#         note.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+#         note.updated_at.strftime('%Y-%m-%d %H:%M:%S')
+#     ])
+#
+#     # 保存到内存
+#     buffer = BytesIO()
+#     wb.save(buffer)
+#     buffer.seek(0)
+#
+#     # 返回响应
+#     response = HttpResponse(buffer, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+#     response['Content-Disposition'] = f'attachment; filename="note_{note.id}.xlsx"'
+#     return response
+
+
 @login_required
 def export_to_excel(request, note_id):
     note = get_object_or_404(Note, id=note_id, user=request.user)
-    wb = Workbook()
-    ws = wb.active
-    ws.title = "笔记内容"
-
-    # 写入表头
-    ws.append(['标题', '内容', '创建时间', '更新时间'])
-
-    # 写入笔记数据
-    ws.append([
-        note.title,
-        note.content,
-        note.created_at.strftime('%Y-%m-%d %H:%M:%S'),
-        note.updated_at.strftime('%Y-%m-%d %H:%M:%S')
-    ])
-
-    # 保存到内存
+    data = {
+        '标题': [note.title],
+        '内容': [note.content],
+        '创建时间': [note.created_at.strftime('%Y-%m-%d %H:%M:%S')],
+        '更新时间': [note.updated_at.strftime('%Y-%m-%d %H:%M:%S')]
+    }
+    df = pd.DataFrame(data)
     buffer = BytesIO()
-    wb.save(buffer)
+    with pd.ExcelWriter(buffer, engine='openpyxl') as writer:
+        df.to_excel(writer, index=False, sheet_name='笔记内容')
     buffer.seek(0)
-
-    # 返回响应
     response = HttpResponse(buffer, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = f'attachment; filename="note_{note.id}.xlsx"'
     return response
-
 
 
