@@ -39,5 +39,6 @@ urlpatterns = [
     path('change_password/', views.change_password, name='change_password'),
     path('backup/', views.backup_notes, name='backup_notes'),
     path('restore/', views.restore_notes, name='restore_notes'),
+    path('export_to_excel/<int:note_id>/', views.export_to_excel, name='export_to_excel'),
 
 ]

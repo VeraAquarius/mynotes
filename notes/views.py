@@ -28,6 +28,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib import messages
 from cryptography.fernet import Fernet
+from openpyxl import Workbook
 
 
 def welcome(request):
@@ -235,6 +236,21 @@ def export_to_pdf(request):
     if pisa_status.err:
         return HttpResponse('PDF生成失败')
     return response
+
+# @login_required
+# def export_to_pdf(request, note_id):
+#     note = get_object_or_404(Note, id=note_id, user=request.user)
+#     buffer = BytesIO()
+#     p = canvas.Canvas(buffer)
+#     p.setFont("Helvetica", 12)
+#     p.drawString(100, 750, f"标题: {note.title}")
+#     p.drawString(100, 730, f"内容: {note.content}")
+#     p.drawString(100, 710, f"创建时间: {note.created_at}")
+#     p.drawString(100, 690, f"更新时间: {note.updated_at}")
+#     p.showPage()
+#     p.save()
+#     buffer.seek(0)
+#     return HttpResponse(buffer, content_type='application/pdf')
 
 
 def export_to_markdown(notes):
@@ -528,6 +544,34 @@ def decrypt_data(encrypted_data, key):
     decrypted_data = fernet.decrypt(encrypted_data).decode()
     return decrypted_data
 
+
+@login_required
+def export_to_excel(request, note_id):
+    note = get_object_or_404(Note, id=note_id, user=request.user)
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "笔记内容"
+
+    # 写入表头
+    ws.append(['标题', '内容', '创建时间', '更新时间'])
+
+    # 写入笔记数据
+    ws.append([
+        note.title,
+        note.content,
+        note.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+        note.updated_at.strftime('%Y-%m-%d %H:%M:%S')
+    ])
+
+    # 保存到内存
+    buffer = BytesIO()
+    wb.save(buffer)
+    buffer.seek(0)
+
+    # 返回响应
+    response = HttpResponse(buffer, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = f'attachment; filename="note_{note.id}.xlsx"'
+    return response
 
 
 
