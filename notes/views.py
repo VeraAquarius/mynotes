@@ -12,7 +12,7 @@ from .forms import (NoteForm,TagForm,CommentForm,ShareNoteForm,CustomUserCreatio
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q,Count, DateField
+from django.db.models import Q,Count, DateField, Sum
 from django.db.models.functions import TruncDate
 from django.core.paginator import Paginator
 from reportlab.pdfgen import canvas
@@ -96,6 +96,7 @@ def create_note(request):
         if form.is_valid():
             note = form.save(commit=False)
             note.user = request.user  # 将当前用户关联到笔记
+            note.word_count = len(form.cleaned_data['content'])  # 计算字数
             note.save()
             form.save_m2m()  # 保存多对多关系
             return redirect('index')
@@ -122,7 +123,9 @@ def edit_note(request, note_id):
     if request.method == 'POST':
         form = NoteForm(request.POST, instance=note)
         if form.is_valid():
-            form.save()
+            note = form.save(commit=False)
+            note.word_count = len(form.cleaned_data['content'])  # 更新字数
+            note.save()
             return redirect('index')
     else:
         form = NoteForm(instance=note)
@@ -645,24 +648,30 @@ def delete_category(request, category_id):
 def notes_stats(request):
     # 统计笔记数量
     note_count = Note.objects.count()
+    # 统计总字数
+    total_words = Note.objects.aggregate(Sum('word_count'))['word_count__sum'] or 0
 
     # 按日期统计笔记数量
     date_stats = Note.objects.annotate(
         date=TruncDate('created_at')
     ).values('date').annotate(
-        count=Count('id')
+        count=Count('id'),
+        words=Sum('word_count')
     ).order_by('date')
 
     # 准备图表数据
     dates = [item['date'] for item in date_stats]
     counts = [item['count'] for item in date_stats]
+    words = [item['words'] for item in date_stats]
 
     # 生成图表
     plt.figure(figsize=(10, 5))
-    plt.bar(dates, counts)
+    plt.bar(dates, counts, label='笔记数量')
+    plt.bar(dates, words, bottom=counts, label='字数')
     plt.xlabel('日期')
-    plt.ylabel('笔记数量')
+    plt.ylabel('数量')
     plt.title('笔记创建日期分布')
+    plt.legend()
     plt.tight_layout()
 
     buffer = BytesIO()
@@ -673,6 +682,7 @@ def notes_stats(request):
 
     return render(request, 'notes/stats.html', {
         'note_count': note_count,
+        'total_words': total_words,
         'chart_data': chart_data
     })
 

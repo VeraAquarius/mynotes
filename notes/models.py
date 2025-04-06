@@ -27,6 +27,7 @@ class Note(models.Model):
     tags = models.ManyToManyField(Tag, blank=True)  # 添加多对多关系
     is_deleted = models.BooleanField(default=False)  # 逻辑删除字段
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True) #分类字段
+    word_count = models.IntegerField(default=0)  # 添加字数字段
 
     def __str__(self):
         return self.title
