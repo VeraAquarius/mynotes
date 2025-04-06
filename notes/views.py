@@ -664,6 +664,10 @@ def notes_stats(request):
     counts = [item['count'] for item in date_stats]
     words = [item['words'] for item in date_stats]
 
+    # 设置中文字体
+    plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
+    plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
+
     # 生成图表
     plt.figure(figsize=(10, 5))
     plt.bar(dates, counts, label='笔记数量')
