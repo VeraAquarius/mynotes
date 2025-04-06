@@ -43,5 +43,6 @@ urlpatterns = [
     path('create_category/', views.create_category, name='create_category'),
     path('category_list/', views.category_list, name='category_list'),
     path('category_detail/<int:category_id>/', views.category_detail, name='category_detail'),
+    path('stats/', views.notes_stats, name='notes_stats'),
 
 ]

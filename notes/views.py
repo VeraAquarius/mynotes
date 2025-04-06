@@ -12,7 +12,8 @@ from .forms import (NoteForm,TagForm,CommentForm,ShareNoteForm,CustomUserCreatio
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from django.db.models import Q,Count, DateField
+from django.db.models.functions import TruncDate
 from django.core.paginator import Paginator
 from reportlab.pdfgen import canvas
 from io import BytesIO
@@ -30,6 +31,8 @@ from django.contrib import messages
 from cryptography.fernet import Fernet
 from openpyxl import Workbook
 import pandas as pd
+import matplotlib.pyplot as plt
+import base64
 
 def welcome(request):
     return HttpResponse("欢迎来到我的笔记应用！")
@@ -615,6 +618,42 @@ def category_detail(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     notes = Note.objects.filter(category=category, user=request.user)
     return render(request, 'notes/category_detail.html', {'category': category, 'notes': notes})
+
+
+def notes_stats(request):
+    # 统计笔记数量
+    note_count = Note.objects.count()
+
+    # 按日期统计笔记数量
+    date_stats = Note.objects.annotate(
+        date=TruncDate('created_at')
+    ).values('date').annotate(
+        count=Count('id')
+    ).order_by('date')
+
+    # 准备图表数据
+    dates = [item['date'] for item in date_stats]
+    counts = [item['count'] for item in date_stats]
+
+    # 生成图表
+    plt.figure(figsize=(10, 5))
+    plt.bar(dates, counts)
+    plt.xlabel('日期')
+    plt.ylabel('笔记数量')
+    plt.title('笔记创建日期分布')
+    plt.tight_layout()
+
+    buffer = BytesIO()
+    plt.savefig(buffer, format='png')
+    buffer.seek(0)
+    chart_data = base64.b64encode(buffer.getvalue()).decode('utf-8')
+    plt.close()
+
+    return render(request, 'notes/stats.html', {
+        'note_count': note_count,
+        'chart_data': chart_data
+    })
+
 
 
 
