@@ -11,6 +11,12 @@
     <ul>
         {% for note in page_obj %}
             <li>{{ note.title }} - {{ note.created_at }}
+                {% if note.reminder_set.exists %}
+                    <p>提醒时间: {{ note.reminder_set.first.reminder_time }}</p>
+                {% else %}
+                    <p>未设置提醒</p>
+                {% endif %}
+                <a href="{% url 'add_reminder' note.id %}">设置提醒</a>
                 <div>标签: {% for tag in note.tags.all %}{{ tag.name }} {% endfor %}</div>
                 <div>分类: {{ note.category.name }} </div>
                 <a href="{% url 'note_detail' note.id %}">查看</a>
