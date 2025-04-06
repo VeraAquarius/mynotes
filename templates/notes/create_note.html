@@ -68,36 +68,37 @@
  <h1>创建新笔记</h1>
     <form method="post">
         {% csrf_token %}
-        <div class="form-group">
-            <label for="id_title">标题:</label>
-            {{ form.title }}
-        </div>
-        <div class="form-group">
-            <label for="id_content">内容:</label>
-            {{ form.content }}
-        </div>
-        <div class="form-group">
-            <label>标签:</label>
-            <div class="checkbox-group">
-                {% for tag in form.tags %}
-                    <label>
-                        {{ tag.tag }}
-                        {{ tag.choice_label }}
-                    </label>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="form-group">
-            <label>分类:</label>
-            <div class="radio-group">
-                {% for cate in form.category %}
-                    <label>
-                        {{ cate.category }}
-                        {{ cate.choice_label }}
-                    </label>
-                {% endfor %}
-            </div>
-        </div>
+        {{ form.as_p }}
+{#        <div class="form-group">#}
+{#            <label for="id_title">标题:</label>#}
+{#            {{ form.title }}#}
+{#        </div>#}
+{#        <div class="form-group">#}
+{#            <label for="id_content">内容:</label>#}
+{#            {{ form.content }}#}
+{#        </div>#}
+{#        <div class="form-group">#}
+{#            <label>标签:</label>#}
+{#            <div class="checkbox-group">#}
+{#                {% for tag in form.tags %}#}
+{#                    <label>#}
+{#                        {{ tag.tag }}#}
+{#                        {{ tag.choice_label }}#}
+{#                    </label>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="form-group">#}
+{#            <label>分类:</label>#}
+{#            <div class="radio-group">#}
+{#                {% for cate in form.category %}#}
+{#                    <label>#}
+{#                        {{ cate.category }}#}
+{#                        {{ cate.choice_label }}#}
+{#                    </label>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        </div>#}
         <button type="submit">保存</button>
     </form>
     <a href="{% url 'index' %}">取消</a>
