@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 36 笔记统计内容 展示页面乱码">
-      <change afterPath="$PROJECT_DIR$/templates/notes/add_reminder.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/notes/view_reminders.html" afterDir="false" />
+    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 37 笔记提醒">
+      <change afterPath="$PROJECT_DIR$/templates/notes/delete_reminder.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/notes/edit_reminder.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/view_reminders.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/view_reminders.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +126,7 @@
       <workItem from="1743832635865" duration="16000" />
       <workItem from="1743832696415" duration="21000" />
       <workItem from="1743832772984" duration="41000" />
-      <workItem from="1743834426563" duration="36427000" />
+      <workItem from="1743834426563" duration="37235000" />
     </task>
     <task id="LOCAL-00001" summary="3 day">
       <option name="closed" value="true" />
@@ -431,7 +432,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743924775572</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="day 37 笔记提醒">
+      <option name="closed" value="true" />
+      <created>1743942902659</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1743942902659</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -505,7 +514,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="12 day" />
     <MESSAGE value="13 day 添加标签功能" />
     <MESSAGE value="15 day 导出笔记" />
     <MESSAGE value="day 16 评论笔记" />
@@ -530,7 +538,8 @@
     <MESSAGE value="day 34 更新笔记的展示内容，显示新增加的分类内容" />
     <MESSAGE value="day 35 笔记统计内容：展示字数统计" />
     <MESSAGE value="day 36 笔记统计内容 展示页面乱码" />
-    <option name="LAST_COMMIT_MESSAGE" value="day 36 笔记统计内容 展示页面乱码" />
+    <MESSAGE value="day 37 笔记提醒" />
+    <option name="LAST_COMMIT_MESSAGE" value="day 37 笔记提醒" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

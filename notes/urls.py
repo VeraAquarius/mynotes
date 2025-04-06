@@ -48,5 +48,7 @@ urlpatterns = [
     path('stats/', views.notes_stats, name='notes_stats'),
     path('view_reminders/', views.view_reminders, name='view_reminders'),
     path('add_reminder/<int:note_id>/', views.add_reminder, name='add_reminder'),
+    path('edit_reminder/<int:reminder_id>/', views.edit_reminder, name='edit_reminder'),
+    path('delete_reminder/<int:reminder_id>/', views.delete_reminder, name='delete_reminder'),
 
 ]

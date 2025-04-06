@@ -9,6 +9,9 @@ from django.utils import timezone
 class ReminderForm(forms.ModelForm):
     class Meta:
         model = Reminder
+        widgets = {
+            'reminder_time': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+        }
         fields = ['reminder_time']
 
     def clean_reminder_time(self):

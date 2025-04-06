@@ -716,4 +716,29 @@ def view_reminders(request):
 
 
 
+@login_required
+def edit_reminder(request, reminder_id):
+    reminder = get_object_or_404(Reminder, id=reminder_id, note__user=request.user)
+    if request.method == 'POST':
+        form = ReminderForm(request.POST, instance=reminder)
+        if form.is_valid():
+            form.save()
+            messages.success(request, '提醒已更新')
+            return redirect('view_reminders')
+    else:
+        form = ReminderForm(instance=reminder)
+    return render(request, 'notes/edit_reminder.html', {'form': form, 'reminder': reminder})
+
+@login_required
+def delete_reminder(request, reminder_id):
+    reminder = get_object_or_404(Reminder, id=reminder_id, note__user=request.user)
+    if request.method == 'POST':
+        reminder.delete()
+        messages.success(request, '提醒已删除')
+        return redirect('view_reminders')
+    return render(request, 'notes/delete_reminder.html', {'reminder': reminder})
+
+
+
+
 
