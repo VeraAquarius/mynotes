@@ -10,6 +10,14 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+
+class Category(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Note(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
@@ -18,6 +26,7 @@ class Note(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # 添加user字段
     tags = models.ManyToManyField(Tag, blank=True)  # 添加多对多关系
     is_deleted = models.BooleanField(default=False)  # 逻辑删除字段
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True) #分类字段
 
     def __str__(self):
         return self.title
@@ -55,6 +64,6 @@ class SharedNote(models.Model):
     def __str__(self):
         return f"Shared {self.note.title} with {self.shared_with.username}"
 
-    
+
 
 

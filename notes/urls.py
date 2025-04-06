@@ -40,5 +40,8 @@ urlpatterns = [
     path('backup/', views.backup_notes, name='backup_notes'),
     path('restore/', views.restore_notes, name='restore_notes'),
     path('export_to_excel/<int:note_id>/', views.export_to_excel, name='export_to_excel'),
+    path('create_category/', views.create_category, name='create_category'),
+    path('category_list/', views.category_list, name='category_list'),
+    path('category_detail/<int:category_id>/', views.category_detail, name='category_detail'),
 
 ]

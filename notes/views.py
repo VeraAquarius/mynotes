@@ -4,11 +4,11 @@ from django.template.loader import render_to_string
 
 # Create your views here.
 # notes/views.py
-from .models import Note,Tag,Comment, CommentHistory, SharedNote
+from .models import Note,Tag,Comment, CommentHistory, SharedNote, Category
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import (NoteForm,TagForm,CommentForm,ShareNoteForm,CustomUserCreationForm,
-                    EmailUpdateForm, CustomPasswordChangeForm,ProfileForm)
+                    EmailUpdateForm, CustomPasswordChangeForm,ProfileForm, CategoryForm)
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -591,5 +591,30 @@ def export_to_excel(request, note_id):
     response = HttpResponse(buffer, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = f'attachment; filename="note_{note.id}.xlsx"'
     return response
+
+
+
+@login_required
+def create_category(request):
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('category_list')
+    else:
+        form = CategoryForm()
+    return render(request, 'notes/create_category.html', {'form': form})
+
+@login_required
+def category_list(request):
+    categories = Category.objects.all()
+    return render(request, 'notes/category_list.html', {'categories': categories})
+
+@login_required
+def category_detail(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    notes = Note.objects.filter(category=category, user=request.user)
+    return render(request, 'notes/category_detail.html', {'category': category, 'notes': notes})
+
 
 

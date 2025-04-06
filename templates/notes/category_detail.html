@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ category.name }} - 笔记列表</title>
+</head>
+<body>
+    <h1>{{ category.name }} - 笔记列表</h1>
+    <ul>
+        {% for note in notes %}
+            <li>
+                {{ note.title }} - {{ note.created_at }}
+                <a href="{% url 'edit_note' note.id %}">编辑</a>
+                <a href="{% url 'delete_note' note.id %}">删除</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'category_list' %}">返回分类列表</a>
+</body>
+</html>

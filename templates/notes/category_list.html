@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分类列表</title>
+</head>
+<body>
+    <h1>分类列表</h1>
+    <a href="{% url 'create_category' %}">创建新分类</a>
+    <ul>
+        {% for category in categories %}
+            <li>
+                {{ category.name }}
+                <a href="{% url 'category_detail' category.id %}">查看笔记</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

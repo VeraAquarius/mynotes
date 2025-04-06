@@ -4,8 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 29 导出笔记内容为excel">
+    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 30 导出笔记内容为excel 使用pandas 方式导出">
+      <change afterPath="$PROJECT_DIR$/templates/notes/category_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/notes/category_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/notes/create_category.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +127,7 @@
       <workItem from="1743832635865" duration="16000" />
       <workItem from="1743832696415" duration="21000" />
       <workItem from="1743832772984" duration="41000" />
-      <workItem from="1743834426563" duration="25550000" />
+      <workItem from="1743834426563" duration="26584000" />
     </task>
     <task id="LOCAL-00001" summary="3 day">
       <option name="closed" value="true" />
@@ -370,7 +377,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743913961002</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="day 30 导出笔记内容为excel 使用pandas 方式导出">
+      <option name="closed" value="true" />
+      <created>1743914450537</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1743914450537</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -444,7 +459,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="3 day" />
     <MESSAGE value="4 day" />
     <MESSAGE value="5 day" />
     <MESSAGE value="7 day" />
@@ -469,7 +483,8 @@
     <MESSAGE value="day 27 备份和恢复笔记内容" />
     <MESSAGE value="day 28 备份和恢复笔记内容进行加密" />
     <MESSAGE value="day 29 导出笔记内容为excel" />
-    <option name="LAST_COMMIT_MESSAGE" value="day 29 导出笔记内容为excel" />
+    <MESSAGE value="day 30 导出笔记内容为excel 使用pandas 方式导出" />
+    <option name="LAST_COMMIT_MESSAGE" value="day 30 导出笔记内容为excel 使用pandas 方式导出" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

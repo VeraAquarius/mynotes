@@ -1,6 +1,6 @@
 # notes/forms.py
 from django import forms
-from .models import Note,Tag, Comment
+from .models import Note,Tag, Comment,Category
 from django.contrib.auth.forms import UserCreationForm,PasswordChangeForm
 from django.contrib.auth.models import User
 
@@ -13,8 +13,13 @@ class NoteForm(forms.ModelForm):
     )
     class Meta:
         model = Note
-        fields = ['title', 'content', 'tags']
+        fields = ['title', 'content', 'category','tags']
 
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['name']
 
 
 class TagForm(forms.ModelForm):
