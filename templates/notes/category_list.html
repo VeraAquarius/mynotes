@@ -11,7 +11,9 @@
         {% for category in categories %}
             <li>
                 {{ category.name }}
-                <a href="{% url 'category_detail' category.id %}">查看笔记</a>
+                <a href="{% url 'category_detail' category.id %}">查看分类</a>
+                <a href="{% url 'edit_category' category.id %}">编辑分类</a>
+                <a href="{% url 'delete_category' category.id %}">删除分类</a>
             </li>
         {% endfor %}
     </ul>

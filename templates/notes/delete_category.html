@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>删除分类</title>
+</head>
+<body>
+    <h1>删除分类</h1>
+    <p>确定要删除分类 "{{ category.name }}" 吗？</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">确认删除</button>
+        <a href="{% url 'index' %}">取消</a>
+    </form>
+</body>
+</html>

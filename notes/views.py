@@ -620,6 +620,28 @@ def category_detail(request, category_id):
     return render(request, 'notes/category_detail.html', {'category': category, 'notes': notes})
 
 
+@login_required
+def edit_category(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            return redirect('category_list')
+    else:
+        form = CategoryForm(instance=category)
+    return render(request, 'notes/edit_category.html', {'form': form})
+
+
+@login_required
+def delete_category(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    if request.method == 'POST':
+        category.delete()
+        return redirect('category_list')
+    return render(request, 'notes/delete_category.html', {'category': category})
+
+
 def notes_stats(request):
     # 统计笔记数量
     note_count = Note.objects.count()

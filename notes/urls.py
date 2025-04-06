@@ -43,6 +43,8 @@ urlpatterns = [
     path('create_category/', views.create_category, name='create_category'),
     path('category_list/', views.category_list, name='category_list'),
     path('category_detail/<int:category_id>/', views.category_detail, name='category_detail'),
+    path('edit_category/<int:category_id>/', views.edit_category, name='edit_category'),
+    path('delete_category/<int:category_id>/', views.delete_category, name='delete_category'),
     path('stats/', views.notes_stats, name='notes_stats'),
 
 ]
