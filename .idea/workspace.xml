@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 35 笔记统计内容：展示字数统计">
+    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 36 笔记统计内容 展示页面乱码">
+      <change afterPath="$PROJECT_DIR$/templates/notes/add_reminder.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/notes/view_reminders.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mynotes/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mynotes/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -121,7 +125,7 @@
       <workItem from="1743832635865" duration="16000" />
       <workItem from="1743832696415" duration="21000" />
       <workItem from="1743832772984" duration="41000" />
-      <workItem from="1743834426563" duration="32343000" />
+      <workItem from="1743834426563" duration="36427000" />
     </task>
     <task id="LOCAL-00001" summary="3 day">
       <option name="closed" value="true" />
@@ -419,7 +423,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743924226069</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="day 36 笔记统计内容 展示页面乱码">
+      <option name="closed" value="true" />
+      <created>1743924775572</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1743924775572</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -493,7 +505,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="10 day" />
     <MESSAGE value="12 day" />
     <MESSAGE value="13 day 添加标签功能" />
     <MESSAGE value="15 day 导出笔记" />
@@ -518,19 +529,20 @@
     <MESSAGE value="day 33 笔记分类 的增删改查功能完善" />
     <MESSAGE value="day 34 更新笔记的展示内容，显示新增加的分类内容" />
     <MESSAGE value="day 35 笔记统计内容：展示字数统计" />
-    <option name="LAST_COMMIT_MESSAGE" value="day 35 笔记统计内容：展示字数统计" />
+    <MESSAGE value="day 36 笔记统计内容 展示页面乱码" />
+    <option name="LAST_COMMIT_MESSAGE" value="day 36 笔记统计内容 展示页面乱码" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/notes/views.py</url>
-          <line>108</line>
+          <line>110</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/notes/views.py</url>
-          <line>109</line>
+          <line>111</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

@@ -4,11 +4,12 @@ from django.template.loader import render_to_string
 
 # Create your views here.
 # notes/views.py
-from .models import Note,Tag,Comment, CommentHistory, SharedNote, Category
+from .models import Note,Tag,Comment, CommentHistory, SharedNote, Category, Reminder
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import (NoteForm,TagForm,CommentForm,ShareNoteForm,CustomUserCreationForm,
-                    EmailUpdateForm, CustomPasswordChangeForm,ProfileForm, CategoryForm)
+                    EmailUpdateForm, CustomPasswordChangeForm,ProfileForm, CategoryForm,
+                    ReminderForm)
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -28,6 +29,7 @@ from .utils import font_patch  # 导入字体设置函数
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib import messages
+from django.utils import timezone
 from cryptography.fernet import Fernet
 from openpyxl import Workbook
 import pandas as pd
@@ -689,6 +691,28 @@ def notes_stats(request):
         'total_words': total_words,
         'chart_data': chart_data
     })
+
+
+
+@login_required
+def add_reminder(request, note_id):
+    note = get_object_or_404(Note, id=note_id, user=request.user)
+    if request.method == 'POST':
+        form = ReminderForm(request.POST)
+        if form.is_valid():
+            reminder = form.save(commit=False)
+            reminder.note = note
+            reminder.save()
+            messages.success(request, '提醒已设置')
+            return redirect('note_detail', note_id=note.id)
+    else:
+        form = ReminderForm()
+    return render(request, 'notes/add_reminder.html', {'form': form, 'note': note})
+
+@login_required
+def view_reminders(request):
+    reminders = Reminder.objects.filter(note__user=request.user, sent=False)
+    return render(request, 'notes/view_reminders.html', {'reminders': reminders})
 
 
 

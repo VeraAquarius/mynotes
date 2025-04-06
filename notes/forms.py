@@ -1,8 +1,21 @@
 # notes/forms.py
 from django import forms
-from .models import Note,Tag, Comment,Category
+from .models import Note,Tag, Comment,Category,Reminder
 from django.contrib.auth.forms import UserCreationForm,PasswordChangeForm
 from django.contrib.auth.models import User
+from django.utils import timezone
+
+
+class ReminderForm(forms.ModelForm):
+    class Meta:
+        model = Reminder
+        fields = ['reminder_time']
+
+    def clean_reminder_time(self):
+        reminder_time = self.cleaned_data['reminder_time']
+        if reminder_time < timezone.now():
+            raise forms.ValidationError("提醒时间不能早于当前时间")
+        return reminder_time
 
 
 class NoteForm(forms.ModelForm):

@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
+from django.utils import timezone
+import pytz
 
 # Create your models here.
 
@@ -31,6 +33,16 @@ class Note(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Reminder(models.Model):
+    note = models.ForeignKey(Note, on_delete=models.CASCADE)
+    reminder_time = models.DateTimeField()
+    sent = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Reminder for {self.note.title} at {self.reminder_time}"
+
 
 class Comment(models.Model):
     note = models.ForeignKey(Note, on_delete=models.CASCADE)

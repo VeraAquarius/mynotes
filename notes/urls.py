@@ -46,5 +46,7 @@ urlpatterns = [
     path('edit_category/<int:category_id>/', views.edit_category, name='edit_category'),
     path('delete_category/<int:category_id>/', views.delete_category, name='delete_category'),
     path('stats/', views.notes_stats, name='notes_stats'),
+    path('view_reminders/', views.view_reminders, name='view_reminders'),
+    path('add_reminder/<int:note_id>/', views.add_reminder, name='add_reminder'),
 
 ]
