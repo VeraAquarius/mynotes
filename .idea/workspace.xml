@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 38 笔记提醒">
+    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 39 笔记提醒 在笔记列表页展示">
+      <change afterPath="$PROJECT_DIR$/mynotes/celery.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notes/tasks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/notes/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mynotes/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mynotes/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -121,7 +122,7 @@
       <workItem from="1743832635865" duration="16000" />
       <workItem from="1743832696415" duration="21000" />
       <workItem from="1743832772984" duration="41000" />
-      <workItem from="1743834426563" duration="37834000" />
+      <workItem from="1743834426563" duration="43522000" />
     </task>
     <task id="LOCAL-00001" summary="3 day">
       <option name="closed" value="true" />
@@ -443,7 +444,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743943698907</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="day 39 笔记提醒 在笔记列表页展示">
+      <option name="closed" value="true" />
+      <created>1743944320681</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1743944320681</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -517,7 +526,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="15 day 导出笔记" />
     <MESSAGE value="day 16 评论笔记" />
     <MESSAGE value="day 17 编辑评论笔记" />
     <MESSAGE value="day 18 评论笔记历史展示" />
@@ -542,7 +550,8 @@
     <MESSAGE value="day 36 笔记统计内容 展示页面乱码" />
     <MESSAGE value="day 37 笔记提醒" />
     <MESSAGE value="day 38 笔记提醒" />
-    <option name="LAST_COMMIT_MESSAGE" value="day 38 笔记提醒" />
+    <MESSAGE value="day 39 笔记提醒 在笔记列表页展示" />
+    <option name="LAST_COMMIT_MESSAGE" value="day 39 笔记提醒 在笔记列表页展示" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
