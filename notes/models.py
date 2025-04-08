@@ -35,6 +35,18 @@ class Note(models.Model):
         return self.title
 
 
+class Collaborator(models.Model):
+    note = models.ForeignKey(Note, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    can_edit = models.BooleanField(default=True)
+
+    class Meta:
+        unique_together = ('note', 'user')
+
+    def __str__(self):
+        return f"{self.user.username} - {self.note.title}"
+
+
 class Reminder(models.Model):
     note = models.ForeignKey(Note, on_delete=models.CASCADE)
     reminder_time = models.DateTimeField()

@@ -50,5 +50,8 @@ urlpatterns = [
     path('add_reminder/<int:note_id>/', views.add_reminder, name='add_reminder'),
     path('edit_reminder/<int:reminder_id>/', views.edit_reminder, name='edit_reminder'),
     path('delete_reminder/<int:reminder_id>/', views.delete_reminder, name='delete_reminder'),
+    path('add_collaborator/<int:note_id>/', views.add_collaborator, name='add_collaborator'),
+    path('remove_collaborator/<int:note_id>/<int:user_id>/', views.remove_collaborator, name='remove_collaborator'),
+    path('collaborators_list/<int:note_id>/', views.collaborators_list, name='collaborators_list'),
 
 ]

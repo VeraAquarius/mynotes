@@ -1,9 +1,27 @@
 # notes/forms.py
 from django import forms
-from .models import Note,Tag, Comment,Category,Reminder
+from .models import Note,Tag, Comment,Category,Reminder,Collaborator
 from django.contrib.auth.forms import UserCreationForm,PasswordChangeForm
 from django.contrib.auth.models import User
 from django.utils import timezone
+
+
+class CollaboratorForm(forms.Form):
+    email = forms.EmailField(label='协作用户邮箱')
+
+    def __init__(self, *args, **kwargs):
+        self.note = kwargs.pop('note', None)
+        super().__init__(*args, **kwargs)
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            raise forms.ValidationError("用户不存在")
+        if Collaborator.objects.filter(note=self.note, user=user).exists():
+            raise forms.ValidationError("用户已经是协作用户")
+        return email
 
 
 class ReminderForm(forms.ModelForm):

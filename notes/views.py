@@ -4,12 +4,13 @@ from django.template.loader import render_to_string
 
 # Create your views here.
 # notes/views.py
-from .models import Note,Tag,Comment, CommentHistory, SharedNote, Category, Reminder
+from .models import (Note,Tag,Comment, CommentHistory, SharedNote, Category,
+                     Reminder, Collaborator)
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import (NoteForm,TagForm,CommentForm,ShareNoteForm,CustomUserCreationForm,
                     EmailUpdateForm, CustomPasswordChangeForm,ProfileForm, CategoryForm,
-                    ReminderForm)
+                    ReminderForm,CollaboratorForm)
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
@@ -738,6 +739,36 @@ def delete_reminder(request, reminder_id):
         return redirect('view_reminders')
     return render(request, 'notes/delete_reminder.html', {'reminder': reminder})
 
+
+@login_required
+def add_collaborator(request, note_id):
+    note = get_object_or_404(Note, id=note_id, user=request.user)
+    if request.method == 'POST':
+        form = CollaboratorForm(request.POST, note=note)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            user = User.objects.get(email=email)
+            Collaborator.objects.create(note=note, user=user)
+            return redirect('note_detail', note_id=note.id)
+    else:
+        form = CollaboratorForm(note=note)
+    return render(request, 'notes/add_collaborator.html', {'form': form, 'note': note})
+
+@login_required
+def remove_collaborator(request, note_id, user_id):
+    note = get_object_or_404(Note, id=note_id, user=request.user)
+    collaborator = get_object_or_404(Collaborator, note=note, user_id=user_id)
+    if request.method == 'POST':
+        collaborator.delete()
+        return redirect('note_detail', note_id=note.id)
+    return render(request, 'notes/remove_collaborator.html', {'note': note, 'collaborator': collaborator})
+
+
+@login_required
+def collaborators_list(request, note_id):
+    note = get_object_or_404(Note, id=note_id, user=request.user)
+    collaborators = Collaborator.objects.filter(note=note)
+    return render(request, 'notes/collaborators_list.html', {'note': note, 'collaborators': collaborators})
 
 
 

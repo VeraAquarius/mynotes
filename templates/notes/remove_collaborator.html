@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>移除协作用户</title>
+</head>
+<body>
+    <h1>移除协作用户</h1>
+    <p>确定要移除 {{ collaborator.user.username }} 吗？</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">确认移除</button>
+    </form>
+    <a href="{% url 'note_detail' note.id %}">取消</a>
+</body>
+</html>

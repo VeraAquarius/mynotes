@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>协作用户列表</title>
+</head>
+<body>
+    <h1>协作用户列表</h1>
+    <p>笔记: {{ note.title }}</p>
+
+    <ul>
+        {% for collaborator in collaborators %}
+            <li>
+                {{ collaborator.user.username }}
+                {% if collaborator.can_edit %}
+                    <span>(可编辑)</span>
+                {% else %}
+                    <span>(只读)</span>
+                {% endif %}
+                <a href="{% url 'remove_collaborator' note.id collaborator.user.id %}">移除</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'note_detail' note.id %}">返回笔记详情</a>
+</body>
+</html>
