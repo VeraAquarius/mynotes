@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>回收站</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
     <h1>回收站</h1>
     <ul>
         {% for note in notes %}
@@ -17,5 +13,4 @@
     </ul>
     <a href="{% url 'empty_trash' %}">清空回收站</a>
     <a href="{% url 'index' %}">返回笔记列表</a>
-</body>
-</html>
+{% endblock %}

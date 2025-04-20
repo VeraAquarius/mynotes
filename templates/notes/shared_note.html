@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>分享的笔记</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
     <h1>分享的笔记</h1>
     <h2>{{ note.title }}</h2>
     <p>{{ note.content }}</p>
     <p>创建时间: {{ note.created_at }}</p>
     <p>分享者: {{ note.user.username }}</p>
     <a href="{% url 'index' %}">返回笔记列表</a>
-</body>
-</html>
+{% endblock %}

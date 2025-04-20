@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>评论历史记录</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
+
     <h1>评论历史记录</h1>
     <p>评论: {{ comment.content }}</p>
     <ul>
@@ -16,5 +13,4 @@
         {% endfor %}
     </ul>
     <a href="{% url 'note_detail' note_id=comment.note.id %}">返回笔记详情</a>
-</body>
-</html>
+{% endblock %}

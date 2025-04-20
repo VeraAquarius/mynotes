@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>分类列表</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
     <h1>分类列表</h1>
     <a href="{% url 'create_category' %}">创建新分类</a>
     <ul>
@@ -17,5 +13,4 @@
             </li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

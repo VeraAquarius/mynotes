@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>编辑分类</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
     <h1>编辑分类</h1>
     <form method="post">
         {% csrf_token %}
@@ -12,5 +8,4 @@
         <button type="submit">保存</button>
     </form>
     <a href="{% url 'category_list' %}">取消</a>
-</body>
-</html>
+{% endblock %}

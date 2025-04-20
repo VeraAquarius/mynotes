@@ -3,28 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <title>笔记应用</title>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #f0f0f0;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+        .user-info {
+            text-align: right;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f8f8f8;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .menu ul li {
+            margin-bottom: 10px;
+        }
+        .menu ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .menu ul li a:hover {
+            color: #007bff;
+        }
+        .content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+        }
+    </style>
 </head>
 <body>
-    <div style="display: flex;">
-        <!-- 左侧菜单 -->
-        <div style="width: 200px; float: left;">
+    <div class="sidebar">
+        <div class="menu">
             <h2>菜单</h2>
             <ul>
                 <li><a href="{% url 'create_note' %}">创建笔记</a></li>
                 <li><a href="{% url 'index' %}">查看笔记</a></li>
+                <li><a href="{% url 'notes_stats' %}">统计笔记</a></li>
+                <li><a href="{% url 'create_tag' %}">创建标签</a></li>
+                <li><a href="{% url 'tag_list' %}">查看标签</a></li>
+                <li><a href="{% url 'trash' %}">查看笔记回收站</a></li>
+                <li><a href="{% url 'view_sharable_notes' %}">分享笔记</a></li>
+                <li><a href="{% url 'backup_notes' %}">备份笔记</a></li>
+                <li><a href="{% url 'backup_notes' %}">恢复笔记</a></li>
+                <li><a href="{% url 'category_list' %}">查看分类</a></li>
+                <li><a href="{% url 'create_category' %}">创建分类</a></li>
+                <li><a href="{% url 'profile' %}">查看个人信息</a></li>
+                <li><a href="{% url 'update_profile' %}">更新个人信息</a></li>
+                <li><a href="{% url 'welcome' %}">欢迎</a></li>
             </ul>
         </div>
-        <!-- 右侧内容区 -->
-        <div style="margin-left: 200px;">
-            <!-- 右上角用户信息 -->
-            <div style="text-align: right; margin-bottom: 20px;">
-                {% if user.is_authenticated %}
-                    <p>欢迎，{{ user.username }}！<a href="{% url 'logout' %}">退出</a></p>
-                {% else %}
-                    <p><a href="{% url 'login' %}">登录</a> | <a href="{% url 'register' %}">注册</a></p>
-                {% endif %}
-            </div>
-            <!-- 内容区域 -->
+    </div>
+    <div class="main-content">
+        <div class="user-info">
+            {% if user.is_authenticated %}
+                <p>欢迎，{{ user.username }}！<a href="{% url 'logout' %}">退出</a></p>
+            {% else %}
+                <p><a href="{% url 'login' %}">登录</a> | <a href="{% url 'register' %}">注册</a></p>
+            {% endif %}
+        </div>
+        <div class="content">
             {% block content %}
             {% endblock %}
         </div>

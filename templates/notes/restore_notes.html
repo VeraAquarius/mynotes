@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>恢复笔记</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
     <h1>恢复笔记</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -15,5 +11,4 @@
         <button type="submit">恢复</button>
     </form>
     <a href="{% url 'index' %}">取消</a>
-</body>
-</html>
+{% endblock %}

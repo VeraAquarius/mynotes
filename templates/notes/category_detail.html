@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ category.name }} - 笔记列表</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
     <h1>{{ category.name }} - 笔记列表</h1>
     <ul>
         {% for note in notes %}
@@ -16,5 +12,4 @@
         {% endfor %}
     </ul>
     <a href="{% url 'category_list' %}">返回分类列表</a>
-</body>
-</html>
+{% endblock %}

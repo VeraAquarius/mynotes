@@ -4,12 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="没有实现这个功能 笔记提醒实现定时提醒的功能">
-      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+    <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="day 41 展示用户登录信息">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/notes/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/notes/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/category_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/category_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/category_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/category_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/change_password.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/change_password.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/comment_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/comment_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/comment_history.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/comment_history.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/create_category.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/create_category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/create_tag.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/create_tag.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/delete_comment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/delete_comment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/delete_note.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/delete_note.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/delete_reminder.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/delete_reminder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/edit_category.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/edit_category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/edit_comment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/edit_comment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/edit_note.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/edit_note.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/empty_trash.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/empty_trash.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/empty_trash_success.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/empty_trash_success.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/export.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/export.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/note_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/note_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/permanent_delete_note.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/permanent_delete_note.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/recover_note.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/recover_note.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/restore_notes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/restore_notes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/search_results.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/search_results.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/sharable_notes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/sharable_notes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/share_note.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/share_note.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/share_success.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/share_success.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/shared_note.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/shared_note.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/stats.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/stats.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/tag_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/tag_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/trash.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/trash.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/update_email.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/update_email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/update_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/update_profile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -461,7 +491,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744116803685</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="day 41 展示用户登录信息">
+      <option name="closed" value="true" />
+      <created>1745122630470</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1745122630470</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,7 +573,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="day 17 编辑评论笔记" />
     <MESSAGE value="day 18 评论笔记历史展示" />
     <MESSAGE value="day 19 评论笔记历史 与笔记 评论 结合展示" />
     <MESSAGE value="day 20 笔记删除以及回收站功能" />
@@ -560,7 +597,8 @@
     <MESSAGE value="day 38 笔记提醒" />
     <MESSAGE value="day 39 笔记提醒 在笔记列表页展示" />
     <MESSAGE value="没有实现这个功能 笔记提醒实现定时提醒的功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="没有实现这个功能 笔记提醒实现定时提醒的功能" />
+    <MESSAGE value="day 41 展示用户登录信息" />
+    <option name="LAST_COMMIT_MESSAGE" value="day 41 展示用户登录信息" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

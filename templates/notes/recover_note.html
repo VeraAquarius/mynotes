@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>恢复笔记</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
     <h1>恢复笔记</h1>
     <p>确定要恢复笔记 "{{ note.title }}" 吗？</p>
     <form method="post">
@@ -12,5 +8,4 @@
         <button type="submit">确认恢复</button>
         <a href="{% url 'trash' %}">取消</a>
     </form>
-</body>
-</html>
+{% endblock %}
