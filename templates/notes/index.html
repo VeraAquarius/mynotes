@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>我的笔记</title>
-</head>
-<body>
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>我的笔记</title>#}
+{#</head>#}
+{#<body>#}
+
+{% extends 'base.html' %}
+
+{% block content %}
+
  <h1>笔记列表</h1>
  <a href="{% url 'create_note' %}">创建新笔记</a>
  <a href="{% url 'trash' %}">回收站</a>
@@ -40,5 +45,7 @@
         {% endif %}
     </div>
 
-</body>
-</html>
+{#</body>#}
+{#</html>#}
+
+{% endblock %}

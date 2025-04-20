@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>笔记应用</title>
+</head>
+<body>
+    <div style="display: flex;">
+        <!-- 左侧菜单 -->
+        <div style="width: 200px; float: left;">
+            <h2>菜单</h2>
+            <ul>
+                <li><a href="{% url 'create_note' %}">创建笔记</a></li>
+                <li><a href="{% url 'index' %}">查看笔记</a></li>
+            </ul>
+        </div>
+        <!-- 右侧内容区 -->
+        <div style="margin-left: 200px;">
+            <!-- 右上角用户信息 -->
+            <div style="text-align: right; margin-bottom: 20px;">
+                {% if user.is_authenticated %}
+                    <p>欢迎，{{ user.username }}！<a href="{% url 'logout' %}">退出</a></p>
+                {% else %}
+                    <p><a href="{% url 'login' %}">登录</a> | <a href="{% url 'register' %}">注册</a></p>
+                {% endif %}
+            </div>
+            <!-- 内容区域 -->
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>

@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff8a3a0f-e4ca-460a-bc03-e0ab88e37f93" name="Changes" comment="没有实现这个功能 笔记提醒实现定时提醒的功能">
-      <change afterPath="$PROJECT_DIR$/templates/notes/add_collaborator.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/notes/collaborators_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/notes/remove_collaborator.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/notes/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/notes/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
